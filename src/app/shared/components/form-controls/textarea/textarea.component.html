@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{ label }}</mat-label>
+  <textarea
+    [formControl]="control"
+    [id]="fieldId"
+    autocomplete="off"
+    matInput
+  ></textarea>
+
+  <mat-hint *ngIf="currentErrorMessage && control.touched">{{
+    currentErrorMessage
+  }}</mat-hint>
+</mat-form-field>

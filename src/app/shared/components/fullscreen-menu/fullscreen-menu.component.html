@@ -1,0 +1,115 @@
+<div *ngIf="isFullscreenMenuOpen" class="fullscreen-menu" [@fullscreen-menu]>
+  <div class="metallic-flare" role="presentation"></div>
+
+  <div class="inner-container">
+    <div class="top-bar">
+      <div class="container">
+        <div class="logo">Arma-composit</div>
+
+        <div class="spacer"></div>
+
+        <div
+          class="fullscreen-menu-controller pointer"
+          [class.active]="isFullscreenMenuOpen"
+          (click)="onFullscreenMenuOpen()"
+          role="button"
+        >
+          <div class="icon">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="language-controller">
+      <a
+        (click)="translateService.setLocale('en')"
+        [class.active]="translateService.locale === 'en'"
+        role="button"
+        >ENG</a
+      >
+      <span class="language-controller_divider"></span>
+      <a
+        (click)="translateService.setLocale('ua')"
+        [class.active]="translateService.locale === 'ua'"
+        role="button"
+        >УКР</a
+      >
+      <span class="language-controller_divider"></span>
+      <a
+        (click)="translateService.setLocale('ru')"
+        [class.active]="translateService.locale === 'ru'"
+        role="button"
+        >РУС</a
+      >
+    </div>
+
+    <nav role="menubar">
+      <a
+        (click)="onPageChange('/')"
+        [class.active]="router.url === '/'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('menu_home') }}</span>
+      </a>
+      <br />
+      <a
+        (click)="onPageChange('/products')"
+        [class.active]="router.url === '/products'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('products') }}</span>
+      </a>
+      <br />
+      <!--      <a-->
+      <!--        (click)="onPageChange('/cost')"-->
+      <!--        [class.active]="router.url === '/cost'"-->
+      <!--        role="menuitem"-->
+      <!--      >-->
+      <!--        <span>{{ translateService.translate('cost') }}</span>-->
+      <!--      </a>-->
+      <!--      <br />-->
+      <a
+        (click)="onPageChange('/production')"
+        [class.active]="router.url === '/production'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('production') }}</span>
+      </a>
+      <br />
+      <a
+        (click)="onPageChange('/certificates')"
+        [class.active]="router.url === '/certificates'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('certificates') }}</span>
+      </a>
+      <br />
+      <a
+        (click)="onPageChange('/dealers')"
+        [class.active]="router.url === '/dealers'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('for-dealers') }}</span>
+      </a>
+      <br />
+      <a
+        (click)="onPageChange('/contacts')"
+        [class.active]="router.url === '/contacts'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('contacts') }}</span>
+      </a>
+      <br />
+      <a
+        (click)="onPageChange('/submit-an-application')"
+        [class.active]="router.url === '/submit-an-application'"
+        role="menuitem"
+      >
+        <span>{{ translateService.translate('submit-an-application') }}</span>
+      </a>
+      <br />
+    </nav>
+  </div>
+</div>

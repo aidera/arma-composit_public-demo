@@ -1,0 +1,9 @@
+/* Media-queries */
+@mixin mq($width, $type: max) {
+  @if $type == min {
+    $width: $width + 1px;
+  }
+  @media only screen and (#{$type}-width: $width) {
+    @content;
+  }
+}

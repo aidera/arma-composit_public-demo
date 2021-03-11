@@ -1,0 +1,158 @@
+@import '../../shared/styles/variables';
+
+.media-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: $color-primary;
+
+  .relative-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+  }
+
+  .background-image {
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      transition: opacity 2s;
+      opacity: 0;
+      animation: home-background-animate 10s ease-in-out alternate infinite;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  @keyframes home-background-animate {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    100% {
+      transform: scale(1.2) rotate(2deg);
+    }
+  }
+
+  .video-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: $color-primary;
+    opacity: 0.5;
+    overflow: hidden;
+  }
+}
+
+.page-container {
+  height: 100%;
+}
+
+.page-content {
+  position: relative;
+  animation-name: content-animation;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  margin-top: 100px;
+  @media (max-width: $bp-lg) {
+    margin-top: 50px;
+  }
+  @media (max-width: $bp-sm) {
+    margin-top: 0px;
+  }
+  @media (max-height: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+    height: 100%;
+  }
+
+  h1 {
+    display: block;
+    color: $text-color-secondary;
+    text-transform: uppercase;
+    font-size: 80px;
+    font-weight: 200;
+    line-height: 1;
+    @media (max-width: 900px) {
+      font-size: 72px;
+      font-weight: 400;
+    }
+    @media (max-width: 400px) {
+      font-size: 64px;
+    }
+    @media (max-width: 350px) {
+      font-size: 48px;
+    }
+    @media (max-height: 500px) {
+      font-size: 56px;
+    }
+    @media (max-height: 350px) {
+      font-size: 36px;
+      margin-top: 16px;
+    }
+  }
+
+  strong {
+    display: block;
+    color: $text-color-secondary;
+    font-weight: 200;
+    font-size: 24px;
+    @media (max-width: 900px) {
+      font-size: 20px;
+      font-weight: 400;
+    }
+    @media (max-width: 400px) {
+      font-size: 16px;
+    }
+    @media (max-height: 500px) {
+      font-size: 16px;
+    }
+  }
+
+  button {
+    font-weight: 200;
+    font-size: 20px;
+    margin-top: 24px;
+    padding: 16px 40px;
+    text-transform: uppercase;
+    margin-right: 24px;
+    color: $text-color-secondary;
+    @media (max-width: 600px) {
+      width: 100%;
+      padding: 16px;
+      font-size: 20px;
+      &:last-child {
+        margin-top: 8px;
+      }
+    }
+    @media (max-height: 500px) {
+      font-size: 20px;
+      padding: 8px 16px;
+    }
+
+    &.mat-stroked-button {
+      border-color: $text-color-secondary;
+    }
+  }
+}

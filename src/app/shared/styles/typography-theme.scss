@@ -1,0 +1,44 @@
+@import 'variables';
+
+@mixin typography-theme($theme) {
+  $config: mat-get-color-config($theme);
+
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  .mat-body,
+  .mat-body-1,
+  .mat-typography {
+    font: 400 16px/1.6 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .mat-typography h1,
+  .mat-typography h2,
+  .mat-typography h3,
+  .mat-typography h4,
+  .mat-typography h5 {
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.4;
+  }
+
+  .mat-typography h1,
+  h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    @media (max-width: $bp-sm) {
+      font-size: 48px;
+    }
+    @media (max-width: $bp-xs) {
+      font-size: 40px;
+    }
+  }
+
+  .mat-typography h2,
+  h2 {
+    font-size: 40px;
+    line-height: 1.2;
+  }
+}

@@ -1,0 +1,394 @@
+@import 'variables';
+@import 'fonts';
+@import 'reset';
+// Plus imports for other components in your app.
+@import 'typography-theme';
+@import 'buttons-theme';
+@import 'progressbar-theme';
+@import 'forms-theme';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($app-black-white-palette, 900, 900, 900);
+$app-accent: mat-palette($mat-indigo, 700, 600, 800);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($app-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: black;
+  overflow: hidden;
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+  cursor: url('../../../assets/images/empty-cursor.png'), auto !important;
+  &:active,
+  &:focus,
+  &:hover {
+    cursor: url('../../../assets/images/empty-cursor.png'), auto !important;
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Raleway', sans-serif;
+}
+
+a,
+a:visited,
+a:active {
+  color: $text-color-primary;
+}
+
+/* Scroll bar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-clip: padding-box;
+  -webkit-border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.theme-dark {
+  color: $text-color-secondary;
+}
+
+.theme-light {
+  color: $text-color-primary;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  &.dark {
+    color: $text-color-secondary;
+  }
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: 1150px;
+  margin: 0 auto;
+  position: relative;
+  @media (max-width: $bp-xl) {
+    width: 950px;
+  }
+  @media (max-width: $bp-lg) {
+    width: 750px;
+  }
+  @media (max-width: $bp-md) {
+    width: 100%;
+    padding: 0 5vw;
+  }
+}
+
+.page-content {
+  padding: 50px 0;
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  width: 1150px;
+  margin: 0 auto;
+  @media (max-width: $bp-xl) {
+    width: 950px;
+  }
+  @media (max-width: $bp-lg) {
+    width: 750px;
+  }
+  @media (max-width: $bp-md) {
+    width: 100%;
+    padding: 0 5vw;
+  }
+}
+
+.simple-text-content {
+  margin: 48px 0;
+  img {
+    margin: 24px 0;
+    box-shadow: $shadow-1;
+    max-width: 100%;
+    animation-name: content-animation-light;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+  }
+}
+
+.background-default {
+  background-color: $body-background-color;
+  animation-name: backdrop-animation-light;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.metallic-flare {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  opacity: 0.5;
+
+  &::after {
+    content: ' ';
+    width: 300vw;
+    height: 300%;
+    position: absolute;
+    top: -100%;
+    transform: rotate(-20deg);
+    background: linear-gradient(
+      to right,
+      rgba(233, 233, 233, 0) 20%,
+      rgba(100, 100, 100, 0.7) 22%,
+      rgba(100, 100, 100, 0.3) 24%,
+      rgba(233, 233, 233, 0) 27%,
+      rgba(233, 233, 233, 0) 28.2%,
+      rgba(100, 100, 100, 0.7) 28.5%,
+      rgba(233, 233, 233, 0) 29%,
+      rgba(233, 233, 233, 0) 90%,
+      rgba(100, 100, 100, 0.5) 91%,
+      rgba(233, 233, 233, 0) 92%
+    );
+    animation-name: metallic-flare-animation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 9s;
+    animation-direction: normal;
+    left: -300%;
+    @media (max-height: 600px) {
+      height: 2000px;
+      top: -500px;
+    }
+  }
+  @keyframes metallic-flare-animation {
+    0% {
+      left: -300%;
+    }
+    35% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+}
+
+.metallic-flare-light {
+  &::after {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 1) 22%,
+      rgba(255, 255, 255, 0.3) 24%,
+      rgba(255, 255, 255, 0) 27%,
+      rgba(255, 255, 255, 0) 28.2%,
+      rgba(255, 255, 255, 0.9) 28.5%,
+      rgba(255, 255, 255, 0) 29%,
+      rgba(255, 255, 255, 0) 90%,
+      rgba(255, 255, 255, 0.9) 91%,
+      rgba(255, 255, 255, 0) 92%
+    );
+  }
+}
+
+.with-content-animation {
+  animation-name: content-animation-light;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+}
+
+.skeleton {
+  width: 100%;
+  min-height: 30px;
+  border-radius: 4px;
+  background: $body-background-color;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -150px;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      to right,
+      rgba(232, 232, 232, 0),
+      rgba(232, 232, 232, 0.9),
+      rgba(232, 232, 232, 0)
+    );
+    animation-name: load;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &.dark {
+    background: #373737;
+    &::before {
+      background: linear-gradient(
+        to right,
+        rgba(66, 66, 66, 0),
+        rgba(66, 66, 66, 0.9),
+        rgba(66, 66, 66, 0)
+      );
+    }
+  }
+}
+
+@keyframes load {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes backdrop-animation {
+  0% {
+    background-color: $color-primary;
+  }
+  50% {
+    background-color: lighten($color-primary, 10%);
+  }
+  100% {
+    background-color: darken($color-primary, 5%);
+  }
+}
+
+@keyframes backdrop-animation-light {
+  0% {
+    background-color: $body-background-color;
+  }
+  50% {
+    background-color: lighten($body-background-color, 10%);
+  }
+  100% {
+    background-color: darken($body-background-color, 5%);
+  }
+}
+
+@media (min-width: 500px) and (min-height: 500px) {
+  @keyframes content-animation {
+    0% {
+      transform: rotate(0.5deg) scale(1.05);
+    }
+    50% {
+      transform: rotate(-1deg) scale(1);
+    }
+    100% {
+      transform: rotate(-0.5deg) scale(0.95);
+    }
+  }
+}
+
+@media (min-width: 500px) and (min-height: 500px) {
+  @keyframes content-animation-light {
+    0% {
+      transform: rotate(0.1deg) scale(1.02);
+    }
+    50% {
+      transform: rotate(-0.1deg) scale(1);
+    }
+    100% {
+      transform: rotate(0deg) scale(0.98);
+    }
+  }
+}
+
+.breadcrumbs {
+  a {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding: 4px 16px;
+    font-size: 16px;
+    display: inline-block;
+    @media (max-width: $bp-sm) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+.mat-icon {
+  user-select: none;
+}
+
+@include typography-theme($app-theme);
+@include buttons-theme($app-theme);
+@include progressbar-theme($app-theme);
+@include forms-theme($app-theme);

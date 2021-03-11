@@ -1,0 +1,122 @@
+@import '../../../shared/styles/variables';
+
+header {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  user-select: none;
+  @media ($bp-lg) {
+    padding: 20px 5vw;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+  }
+
+  .logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $text-color-secondary;
+  }
+
+  .language-controller {
+    margin-right: 24px;
+    @media (max-width: $bp-lg) {
+      display: none;
+    }
+    a {
+      color: $text-color-secondary;
+      cursor: pointer;
+      opacity: 0.8;
+      &.active {
+        opacity: 1;
+        font-weight: 900;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .language-controller_divider {
+      display: inline-block;
+      width: 1px;
+      height: 10px;
+      background-color: $text-color-secondary;
+      margin: 0 10px;
+      opacity: 0.8;
+    }
+  }
+
+  .fullscreen-menu-controller {
+    cursor: pointer;
+    .icon {
+      position: relative;
+      width: 50px;
+      height: 50px;
+
+      .line {
+        background-color: $text-color-secondary;
+        height: 2px;
+        width: 30px;
+        position: absolute;
+        left: 50%;
+        margin-left: -15px;
+        top: 50%;
+        margin-top: -1px;
+        transition: $transition-1;
+      }
+      .line-1 {
+        margin-top: -4px;
+      }
+      .line-2 {
+        margin-top: 3px;
+      }
+    }
+
+    &.active {
+      .icon {
+        .line-1 {
+          transform: rotate(45deg);
+          margin-top: -1px;
+        }
+        .line-2 {
+          transform: rotate(-45deg);
+          margin-top: -1px;
+        }
+      }
+    }
+  }
+}
+
+:host {
+  &[theme='light'] {
+    .logo {
+      color: $text-color-primary;
+    }
+
+    .language-controller {
+      margin-right: 24px;
+      @media (max-width: $bp-lg) {
+        display: none;
+      }
+
+      a {
+        color: $text-color-primary;
+      }
+      .language-controller_divider {
+        background-color: $text-color-primary;
+      }
+    }
+
+    .fullscreen-menu-controller {
+      .icon {
+        .line {
+          background-color: $text-color-primary;
+        }
+      }
+    }
+  }
+}

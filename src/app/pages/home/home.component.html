@@ -1,0 +1,54 @@
+<div class="media-container">
+  <!--  <video-->
+  <!--    loop-->
+  <!--    muted-->
+  <!--    autoplay-->
+  <!--    oncanplay="this.play()"-->
+  <!--    onloadedmetadata="this.muted = true"-->
+  <!--    playsinline-->
+  <!--  >-->
+  <!--    <source src="../../../assets/video/test2.mp4" type="video/mp4" />-->
+  <!--  </video>-->
+  <!--  <div class="video-overlay"></div>-->
+  <div class="background-image" #bgImage>
+    <img
+      class="active"
+      src="../../../assets/images/home-background-image-1.jpg"
+      alt=""
+    />
+    <img src="../../../assets/images/home-background-image-2.jpg" alt="" />
+    <img src="../../../assets/images/home-background-image-3.jpg" alt="" />
+    <img src="../../../assets/images/home-background-image-4.jpg" alt="" />
+  </div>
+  <div class="metallic-flare"></div>
+</div>
+
+<div class="page-container theme-dark">
+  <app-header theme="dark"></app-header>
+
+  <main>
+    <div
+      class="page-content"
+      appFadeInAndUpMultiplyAnimation
+      [duration]="1.2"
+      [delay]="0.5"
+    >
+      <h1>Arma-composit</h1>
+      <strong>{{ translateService.translate('home-page_description') }}</strong>
+      <div class="buttons">
+        <button
+          mat-stroked-button
+          [routerLink]="['/submit-an-application']"
+          role="link"
+        >
+          {{ translateService.translate('order') }}
+        </button>
+        <button mat-button [routerLink]="['/products']" role="link">
+          {{ translateService.translate('products-and-cost') }}
+        </button>
+      </div>
+    </div>
+
+    <app-sidebar theme="dark"></app-sidebar>
+  </main>
+</div>

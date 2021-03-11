@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+$app-orange-palette: (
+  100: #f44b2d,
+  500: #ef4123,
+  900: #b40000,
+  contrast: (
+    100: $light-primary-text,
+    500: $light-primary-text,
+    900: $light-primary-text,
+  ),
+);
+$app-black-white-palette: (
+  100: #ffffff,
+  500: #fefefe,
+  900: #000000,
+  contrast: (
+    100: $dark-primary-text,
+    500: $dark-primary-text,
+    900: $light-primary-text,
+  ),
+);

@@ -1,0 +1,35 @@
+<mat-form-field appearance="standard">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    [formControl]="control"
+    [id]="fieldId"
+    [type]="type"
+    autocomplete="off"
+    matInput
+  />
+  <mat-icon *ngIf="icon && type !== 'password'" matSuffix>
+    {{ icon }}
+  </mat-icon>
+
+  <mat-icon
+    *ngIf="fieldType === 'password' && type === 'password'"
+    matSuffix
+    class="password-button"
+    (click)="changePasswordFieldType()"
+  >
+    {{ icons.passwordShow }}
+  </mat-icon>
+
+  <mat-icon
+    *ngIf="fieldType === 'password' && type !== 'password'"
+    matSuffix
+    class="password-button"
+    (click)="changePasswordFieldType()"
+  >
+    {{ icons.passwordHide }}
+  </mat-icon>
+
+  <mat-hint *ngIf="currentErrorMessage && control.touched">{{
+    currentErrorMessage
+  }}</mat-hint>
+</mat-form-field>

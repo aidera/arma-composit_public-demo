@@ -1,0 +1,223 @@
+@import '../../../shared/styles/variables';
+
+.fullscreen-menu {
+  z-index: 1100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-primary;
+  animation-name: backdrop-animation;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .metallic-flare {
+    position: fixed;
+  }
+
+  .top-bar {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    user-select: none;
+    @media ($bp-lg) {
+      padding: 20px 5vw;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: $text-color-secondary;
+    }
+
+    .fullscreen-menu-controller {
+      cursor: pointer;
+      .icon {
+        position: relative;
+        width: 50px;
+        height: 50px;
+
+        .line {
+          background-color: $text-color-secondary;
+          height: 2px;
+          width: 30px;
+          position: absolute;
+          left: 50%;
+          margin-left: -15px;
+          top: 50%;
+          margin-top: -1px;
+          transition: $transition-1;
+        }
+        .line-1 {
+          margin-top: -4px;
+        }
+        .line-2 {
+          margin-top: 3px;
+        }
+      }
+
+      &.active {
+        .icon {
+          .line-1 {
+            transform: rotate(45deg);
+            margin-top: -1px;
+          }
+          .line-2 {
+            transform: rotate(-45deg);
+            margin-top: -1px;
+          }
+        }
+      }
+    }
+  }
+
+  .language-controller {
+    text-align: center;
+    display: block;
+    position: relative;
+
+    a {
+      color: $text-color-secondary;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: $transition-1;
+      display: inline-block;
+      &.active {
+        opacity: 1;
+        font-weight: 900;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .language-controller_divider {
+      display: inline-block;
+      width: 1px;
+      height: 10px;
+      background-color: $text-color-secondary;
+      margin: 0 10px;
+      opacity: 0.8;
+    }
+  }
+
+  nav {
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    flex-grow: 1;
+    margin: 50px 0;
+    animation-name: nav-animation;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+
+    @media (min-width: 500px) {
+      @keyframes nav-animation {
+        0% {
+          transform: rotate(0.1deg) scale(1.02);
+        }
+        50% {
+          transform: rotate(-0.2deg) scale(1);
+        }
+        100% {
+          transform: rotate(-0.1deg) scale(0.97);
+        }
+      }
+    }
+
+    a {
+      cursor: pointer;
+      margin-bottom: 24px;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      white-space: nowrap;
+      @media (max-height: 700px) {
+        margin-bottom: 24px;
+      }
+      @media (max-height: 600px) {
+        margin-bottom: 16px;
+      }
+      span {
+        color: $text-color-secondary;
+        text-transform: uppercase;
+        font-size: 20px;
+        transition: $transition-1;
+        opacity: 0.8;
+        @media (max-height: 600px) {
+          font-size: 16px;
+        }
+        &::after {
+          content: ' ';
+          height: 1px;
+          background-color: $text-color-secondary;
+          width: 0;
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: $transition-1;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+        &:hover {
+          opacity: 1;
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+
+      &.active {
+        span {
+          font-weight: 900;
+          opacity: 1;
+          &::after,
+          &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: $text-color-secondary;
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            margin-top: -3px;
+            transform: none;
+            left: unset;
+          }
+          &::after {
+            right: -20px;
+          }
+          &::before {
+            left: -20px;
+          }
+        }
+      }
+    }
+  }
+}

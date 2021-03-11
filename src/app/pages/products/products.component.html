@@ -1,0 +1,87 @@
+<div class="background background-default"></div>
+<div class="metallic-flare metallic-flare-light"></div>
+
+<div class="page-container theme-light">
+  <img
+    class="background-image background-image-1"
+    src="../../../assets/images/armature-background2.png"
+    alt="armature"
+    appFadeInAnimation
+    [duration]="1.2"
+    [delay]="1"
+  />
+
+  <app-header theme="light"></app-header>
+
+  <main>
+    <div
+      class="page-content"
+      appFadeInAndUpMultiplyAnimation
+      [duration]="1.2"
+      [delay]="0.3"
+    >
+      <h1>{{ translateService.translate('products') }}</h1>
+      <div>
+        <ng-container *ngIf="productsAreFetching || categoriesAreFetching">
+          <h2></h2>
+          <ul class="products-list" style="margin-top: 92px">
+            <app-product
+              *ngFor="let i of onLoadingItems"
+              [isLoading]="true"
+            ></app-product>
+          </ul>
+        </ng-container>
+
+        <ng-container *ngIf="categories && products">
+          <ng-container *ngFor="let category of categories">
+            <h2>{{ category.title[translateService.locale] }}</h2>
+            <ul
+              class="products-list"
+              itemscope
+              itemtype="https://schema.org/ItemList"
+            >
+              <app-product
+                *ngFor="let product of products | productFilter: category.id"
+                [product]="product"
+                [category]="category"
+              ></app-product>
+            </ul>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="breadcrumbs with-content-animation">
+        <a
+          [routerLink]="['/submit-an-application']"
+          mat-raised-button
+          color="primary"
+          role="link"
+          >{{ translateService.translate('submit-an-application') }}</a
+        >
+        <!--        <a-->
+        <!--          [routerLink]="['/cost']"-->
+        <!--          mat-raised-button-->
+        <!--          color="secondary"-->
+        <!--          role="link"-->
+        <!--          >{{ translateService.translate('cost-calculator') }}</a-->
+        <!--        >-->
+        <a
+          [routerLink]="['/production']"
+          mat-raised-button
+          color="secondary"
+          role="link"
+          >{{ translateService.translate('production') }}</a
+        >
+        <a
+          [routerLink]="['/certificates']"
+          mat-raised-button
+          color="secondary"
+          role="link"
+          >{{ translateService.translate('certificates') }}</a
+        >
+      </div>
+    </div>
+
+    <app-sidebar theme="light"></app-sidebar>
+  </main>
+</div>

@@ -1,0 +1,33 @@
+@import 'palettes';
+
+/* Breakpoints */
+$bp-xxl: 1400px;
+$bp-xl: 1200px;
+$bp-lg: 992px;
+$bp-md: 768px;
+$bp-sm: 576px;
+$bp-xs: 350px;
+
+/* Colors */
+$color-primary: mat-color($app-black-white-palette, 900);
+$color-accent: mat-color($mat-indigo, 700);
+
+$body-background-color: #e1e1e1;
+$paper-background-color: #ffffff;
+
+$divider-color: #333333;
+
+$text-color-primary: #333333;
+$text-color-secondary: #f1f1f1;
+$link-color-primary: #3e72e1;
+
+$error-color: #f44336;
+
+$disable-color: #c8c8c8;
+
+/* Transition */
+$transition-1: 0.25s ease-in-out;
+
+$shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1);
+$shadow-1-hover: 0 14px 28px rgba(0, 0, 0, 0.25),
+  0 10px 10px rgba(0, 0, 0, 0.08);

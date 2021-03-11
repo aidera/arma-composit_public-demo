@@ -1,0 +1,15 @@
+@import 'variables';
+
+@mixin progressbar-theme($theme) {
+  $config: mat-get-color-config($theme);
+
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  .mat-progress-bar-background {
+    background-color: #c5cae9 !important;
+  }
+  .mat-progress-bar-buffer {
+    background-color: #c5cae9 !important;
+  }
+}

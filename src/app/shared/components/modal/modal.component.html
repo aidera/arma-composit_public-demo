@@ -1,0 +1,12 @@
+<div
+  (click)="onClose()"
+  class="backdrop"
+  role="button"
+  [@all]
+  *ngIf="isOpen"
+></div>
+
+<div class="modal" role="alert" (click)="onClose()" [@all] *ngIf="isOpen">
+  <mat-icon>check_circle</mat-icon>
+  <h3>{{ title }}</h3>
+</div>

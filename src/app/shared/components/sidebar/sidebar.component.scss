@@ -1,0 +1,113 @@
+@import '../../../shared/styles/variables';
+
+:host {
+  position: relative;
+  height: 100%;
+}
+
+nav {
+  width: 300px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  user-select: none;
+  position: sticky;
+  top: 150px;
+
+  @media (max-width: $bp-lg) {
+    display: none;
+  }
+  @media (max-height: 500px) {
+    display: none;
+  }
+
+  a {
+    cursor: pointer;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    position: relative;
+    @media (max-height: 700px) {
+      margin-bottom: 24px;
+    }
+    @media (max-height: 600px) {
+      margin-bottom: 16px;
+    }
+    span {
+      color: $text-color-secondary;
+      text-transform: uppercase;
+      font-size: 20px;
+      transition: $transition-1;
+      opacity: 0.8;
+      @media (max-height: 600px) {
+        font-size: 16px;
+      }
+      &::after {
+        content: ' ';
+        height: 1px;
+        background-color: $text-color-secondary;
+        width: 50px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transition: $transition-1;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:hover {
+        opacity: 1;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &.active {
+      span {
+        font-weight: 900;
+        opacity: 1;
+        &::before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          background-color: $text-color-secondary;
+          display: block;
+          position: absolute;
+          border-radius: 50%;
+          top: 50%;
+          right: -20px;
+          margin-top: -3px;
+        }
+      }
+    }
+  }
+}
+
+:host {
+  &[theme='light'] {
+    nav {
+      a {
+        span {
+          color: $text-color-primary;
+          &::after {
+            background-color: $text-color-primary;
+          }
+        }
+        &.active {
+          span {
+            &::before {
+              background-color: $text-color-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

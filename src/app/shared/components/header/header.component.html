@@ -1,0 +1,44 @@
+<header role="tooltip">
+  <div class="container">
+    <div class="logo">Arma-composit</div>
+
+    <div class="spacer"></div>
+
+    <div class="language-controller">
+      <a
+        (click)="translateService.setLocale('en')"
+        [class.active]="translateService.locale === 'en'"
+        role="button"
+        >ENG</a
+      >
+      <span class="language-controller_divider"></span>
+      <a
+        (click)="translateService.setLocale('ua')"
+        [class.active]="translateService.locale === 'ua'"
+        role="button"
+        >УКР</a
+      >
+      <span class="language-controller_divider"></span>
+      <a
+        (click)="translateService.setLocale('ru')"
+        [class.active]="translateService.locale === 'ru'"
+        role="button"
+        >РУС</a
+      >
+    </div>
+
+    <div
+      class="fullscreen-menu-controller pointer"
+      [class.active]="isFullscreenMenuOpen"
+      (click)="onFullscreenMenuOpen()"
+      role="button"
+    >
+      <div class="icon">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<app-fullscreen-menu></app-fullscreen-menu>

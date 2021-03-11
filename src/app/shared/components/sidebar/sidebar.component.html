@@ -1,0 +1,42 @@
+<nav role="menu">
+  <a
+    [routerLink]="['/']"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    role="menuitem"
+  >
+    <span>{{ translateService.translate('menu_home') }}</span>
+  </a>
+
+  <a [routerLink]="['/products']" routerLinkActive="active" role="menuitem">
+    <span>{{ translateService.translate('products') }}</span>
+  </a>
+
+  <!--  <a [routerLink]="['/cost']" routerLinkActive="active" role="menuitem">-->
+  <!--    <span>{{ translateService.translate('cost') }}</span>-->
+  <!--  </a>-->
+
+  <a [routerLink]="['/production']" routerLinkActive="active" role="menuitem">
+    <span>{{ translateService.translate('production') }}</span>
+  </a>
+
+  <a [routerLink]="['/certificates']" routerLinkActive="active" role="menuitem">
+    <span>{{ translateService.translate('certificates') }}</span>
+  </a>
+
+  <a [routerLink]="['/dealers']" routerLinkActive="active" role="menuitem">
+    <span>{{ translateService.translate('for-dealers') }}</span>
+  </a>
+
+  <a [routerLink]="['/contacts']" routerLinkActive="active" role="menuitem">
+    <span>{{ translateService.translate('contacts') }}</span>
+  </a>
+
+  <a
+    [routerLink]="['/submit-an-application']"
+    routerLinkActive="active"
+    role="menuitem"
+  >
+    <span>{{ translateService.translate('submit-an-application') }}</span>
+  </a>
+</nav>

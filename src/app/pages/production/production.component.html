@@ -1,0 +1,102 @@
+<div class="background background-default"></div>
+<div class="fire-lights">
+  <div class="fire-light fire-light-1"></div>
+  <div class="fire-light fire-light-2"></div>
+  <div class="fire-light fire-light-3"></div>
+  <div class="fire-light fire-light-4"></div>
+  <div class="fire-light fire-light-5"></div>
+  <div class="fire-light fire-light-6"></div>
+  <div class="fire-light fire-light-7"></div>
+  <div class="fire-light fire-light-8"></div>
+</div>
+
+<div class="page-container theme-dark">
+  <app-header theme="dark"></app-header>
+
+  <main>
+    <div
+      class="page-content"
+      appFadeInAndUpMultiplyAnimation
+      [duration]="1.2"
+      [delay]="0.3"
+    >
+      <h1>{{ translateService.translate('production') }}</h1>
+
+      <div class="simple-text-content">
+        <ng-container *ngIf="page === null">
+          <div class="skeleton dark"></div>
+          <br />
+          <div class="skeleton dark"></div>
+          <br />
+          <div class="skeleton dark"></div>
+          <br />
+          <div class="skeleton dark"></div>
+          <br />
+          <div class="skeleton dark" [ngStyle]="{ height: '500px' }"></div>
+        </ng-container>
+
+        <ng-container *ngIf="page && page.content">
+          <ng-container
+            *ngFor="let contentPart of page.content | keyvalue; let i = index"
+          >
+            <p
+              *ngIf="contentPart.value.text"
+              appFadeInAndUpAnimation
+              [duration]="1.2"
+              [delay]="0.3 * (i + 1) * 1.2"
+            >
+              {{ contentPart.value.text[translateService.locale] }}
+            </p>
+
+            <div
+              *ngIf="contentPart.value.img"
+              appFadeInAndUpAnimation
+              [duration]="1.2"
+              [delay]="0.3 * (i + 1) * 1.2"
+            >
+              <img
+                [src]="contentPart.value.img.path | safeUrl"
+                [alt]="
+                  contentPart.value.img.description
+                    ? contentPart.value.img.description[translateService.locale]
+                    : ''
+                "
+                [title]="
+                  contentPart.value.img.description
+                    ? contentPart.value.img.description[translateService.locale]
+                    : ''
+                "
+              />
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="breadcrumbs with-content-animation">
+        <a
+          [routerLink]="['/submit-an-application']"
+          mat-raised-button
+          color="primary"
+          role="link"
+          >{{ translateService.translate('submit-an-application') }}</a
+        >
+        <a
+          [routerLink]="['/products']"
+          mat-raised-button
+          color="secondary"
+          role="link"
+          >{{ translateService.translate('products') }}</a
+        >
+        <a
+          [routerLink]="['/certificates']"
+          mat-raised-button
+          color="secondary"
+          role="link"
+          >{{ translateService.translate('certificates') }}</a
+        >
+      </div>
+    </div>
+
+    <app-sidebar theme="dark"></app-sidebar>
+  </main>
+</div>

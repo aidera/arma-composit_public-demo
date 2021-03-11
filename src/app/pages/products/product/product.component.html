@@ -1,0 +1,208 @@
+<ng-container *ngIf="product && category">
+  <li
+    *ngIf="product.categoryId === category.id"
+    class="with-content-animation product"
+    itemprop="itemListElement"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <div
+      class="img"
+      role="img"
+      [ngStyle]="{ backgroundImage: 'url(' + product.image + ')' }"
+    ></div>
+    <img
+      [ngStyle]="{ display: 'none' }"
+      alt="Photo of product"
+      itemprop="image"
+      [src]="product.image"
+    />
+    <div class="content">
+      <h3 itemprop="name">{{ product.title[translateService.locale] }}</h3>
+
+      <ul
+        class="parameters"
+        itemprop="offers"
+        itemscope
+        itemtype="https://schema.org/Offer"
+      >
+        <meta itemprop="addressRegion" content="Украина" />
+        <meta
+          itemprop="itemOffered"
+          [content]="product.title[translateService.locale]"
+        />
+        <meta itemprop="priceCurrency" content="UAH" />
+        <meta
+          itemprop="priceSpecification"
+          [content]="
+            product.parameters && product.parameters.unitToPrice
+              ? translateService.translate(product.parameters.unitToPrice)
+              : category.unitToPrice
+              ? translateService.translate(category.unitToPrice)
+              : ''
+          "
+        />
+        <meta itemprop="seller" content='ТОВ "АРМА_КОМПОЗИТ"' />
+        <meta itemprop="category" [content]="category.title" />
+
+        <li *ngIf="product.parameters.diameter">
+          <span>{{ translateService.translate('diameter') }}:</span>
+          <p *ngIf="product.parameters.diameter !== 'any'">
+            {{ product.parameters.diameter }}
+            {{
+              product.parameters && product.parameters.unitToDiameter
+                ? translateService.translate(product.parameters.unitToDiameter)
+                : category.unitToDiameter
+                ? translateService.translate(category.unitToDiameter)
+                : ''
+            }}
+          </p>
+          <p *ngIf="product.parameters.diameter === 'any'">
+            {{ translateService.translate('any_male') }}
+          </p>
+        </li>
+        <li *ngIf="product.parameters.length">
+          <span>{{ translateService.translate('length') }}:</span>
+          <p *ngIf="product.parameters.length !== 'any'">
+            {{ product.parameters.length }}
+            {{
+              product.parameters && product.parameters.unitToLength
+                ? translateService.translate(product.parameters.unitToLength)
+                : category.unitToLength
+                ? translateService.translate(category.unitToLength)
+                : ''
+            }}
+          </p>
+          <p *ngIf="product.parameters.length === 'any'">
+            {{ translateService.translate('any_female') }}
+          </p>
+        </li>
+        <li *ngIf="product.parameters.width">
+          <span>{{ translateService.translate('width') }}:</span>
+          <p *ngIf="product.parameters.width !== 'any'">
+            {{ product.parameters.width }}
+            {{
+              product.parameters && product.parameters.unitToWidth
+                ? translateService.translate(product.parameters.unitToWidth)
+                : category.unitToWidth
+                ? translateService.translate(category.unitToWidth)
+                : ''
+            }}
+          </p>
+          <p *ngIf="product.parameters.width === 'any'">
+            {{ translateService.translate('any_female') }}
+          </p>
+        </li>
+        <li *ngIf="product.parameters.height">
+          <span>{{ translateService.translate('height') }}:</span>
+          <p *ngIf="product.parameters.height !== 'any'">
+            {{ product.parameters.height }}
+            {{
+              product.parameters && product.parameters.unitToHeight
+                ? translateService.translate(product.parameters.unitToHeight)
+                : category.unitToHeight
+                ? translateService.translate(category.unitToHeight)
+                : ''
+            }}
+          </p>
+          <p *ngIf="product.parameters.height === 'any'">
+            {{ translateService.translate('any_female') }}
+          </p>
+        </li>
+        <li
+          *ngIf="product.parameters.holeSizeX && product.parameters.holeSizeY"
+        >
+          <span>{{ translateService.translate('window-size') }}:</span>
+          <p
+            *ngIf="
+              product.parameters.holeSizeX !== 'any' &&
+              product.parameters.holeSizeY !== 'any'
+            "
+          >
+            {{ product.parameters.holeSizeX }}x{{
+              product.parameters.holeSizeY
+            }}
+            {{
+              product.parameters && product.parameters.unitToHoleSizeX
+                ? translateService.translate(product.parameters.unitToHoleSizeX)
+                : category.unitToHoleSizeX
+                ? translateService.translate(category.unitToHoleSizeX)
+                : ''
+            }}
+          </p>
+          <p
+            *ngIf="
+              product.parameters.holeSizeX === 'any' &&
+              product.parameters.holeSizeY === 'any'
+            "
+          >
+            {{ translateService.translate('any_male') }}
+          </p>
+        </li>
+        <li *ngIf="product.parameters.price">
+          <span itemprop="price"
+            >{{ translateService.translate('cost') }}:</span
+          >
+          <p>
+            {{ translateService.translate('cost_from') }}
+            {{ product.parameters.price | number: '0.2-2' }}
+            {{ translateService.translate('hryvnas_short') }}/{{
+              product.parameters && product.parameters.unitToPrice
+                ? translateService.translate(product.parameters.unitToPrice)
+                : category.unitToPrice
+                ? translateService.translate(category.unitToPrice)
+                : ''
+            }}
+            <ng-container *ngIf="product.parameters.withNDS == true">
+              {{ translateService.translate('with') }}
+              {{ translateService.translate('vat') }}
+            </ng-container>
+            <ng-container *ngIf="product.parameters.withNDS != true">
+              {{ translateService.translate('without') }}
+              {{ translateService.translate('vat') }}
+            </ng-container>
+          </p>
+        </li>
+      </ul>
+      <div class="description">
+        {{ product.description[translateService.locale] }}
+      </div>
+      <div class="buttons">
+        <a
+          [routerLink]="['/submit-an-application']"
+          [queryParams]="{ product: product.id }"
+          mat-flat-button
+          color="primary"
+          role="button"
+          >{{ translateService.translate('order') }}</a
+        >
+        <!--        <a-->
+        <!--          [routerLink]="['/cost']"-->
+        <!--          mat-stroked-button-->
+        <!--          color="secondary"-->
+        <!--          role="button"-->
+        <!--          >{{ translateService.translate('calculate-the-cost') }}</a-->
+        <!--        >-->
+      </div>
+    </div>
+  </li>
+</ng-container>
+
+<ng-container *ngIf="isLoading">
+  <li class="with-content-animation product">
+    <div class="img" style="padding: 16px">
+      <div class="skeleton" style="height: 100%; align-self: stretch"></div>
+    </div>
+    <div class="content">
+      <div class="skeleton"></div>
+      <div class="parameters">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+      <div class="description">
+        <div class="skeleton" style="height: 200px"></div>
+      </div>
+    </div>
+  </li>
+</ng-container>

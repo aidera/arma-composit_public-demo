@@ -1,0 +1,33 @@
+@import 'variables';
+
+@mixin buttons-theme($theme) {
+  $config: mat-get-color-config($theme);
+
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  .mat-raised-button.mat-button-base {
+    //border-radius: 0;
+  }
+
+  .mat-flat-button.mat-button-base.mat-primary {
+    background-color: $text-color-primary;
+    &.mat-button-disabled {
+      background-color: $disable-color;
+      color: $text-color-secondary;
+    }
+  }
+  .mat-raised-button.mat-button-base.mat-primary {
+    background-color: $text-color-primary;
+    &.mat-button-disabled {
+      background-color: $disable-color;
+      color: $text-color-secondary;
+    }
+  }
+
+  .theme-dark {
+    .mat-focus-indicator.mat-raised-button.mat-button-base.mat-secondary {
+      background-color: darken($text-color-secondary, 20%);
+    }
+  }
+}

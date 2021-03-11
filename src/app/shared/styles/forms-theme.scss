@@ -1,0 +1,46 @@
+@import 'variables';
+
+@mixin forms-theme($theme) {
+  $config: mat-get-color-config($theme);
+
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  .mat-form-field-appearance-standard .mat-form-field-underline {
+    background-color: $color-primary;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: $color-primary;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $color-primary;
+  }
+
+  .mat-checkbox {
+    .mat-checkbox-layout {
+      align-items: flex-start !important;
+      align-content: flex-start !important;
+      vertical-align: top;
+      .mat-checkbox-inner-container {
+        vertical-align: top;
+        margin: 0;
+        margin-right: 8px;
+        margin-top: 4px;
+      }
+    }
+    .mat-checkbox-layout .mat-checkbox-label {
+      white-space: normal;
+    }
+  }
+
+  .mat-form-field.mat-form-field-invalid.ng-touched {
+    .mat-hint {
+      color: $error-color;
+    }
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+    padding: 0 !important;
+  }
+}
