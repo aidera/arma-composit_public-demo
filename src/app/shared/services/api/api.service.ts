@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Translate } from '../../models/Translate';
 import { environment } from '../../../../environments/environment';
@@ -9,7 +10,10 @@ import { Category } from '../../models/Category';
 import { Pages } from '../../models/Page';
 import { MainInfoDirty } from '../../models/MainInfo';
 import { CertificateDirty } from '../../models/Certificate';
-import { map } from 'rxjs/operators';
+import { TRANSLATES } from '../../../dummy-data/translates';
+import { PRODUCTS } from './../../../dummy-data/products';
+import { CATEGORIES } from './../../../dummy-data/categories';
+import { CERTIFICATES } from './../../../dummy-data/certificates';
 
 type SendApplicationRequest = {
   userName: string;
@@ -30,24 +34,28 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getTranslates(): Observable<{ [key: string]: Translate }> {
-    return this.http.get<{ [key: string]: Translate }>(
-      `${environment.firebaseDBLink}/translates.json`
-    );
+    // return this.http.get<{ [key: string]: Translate }>(
+    //   `${environment.firebaseDBLink}/translates.json`
+    // );
+
+    return of(TRANSLATES);
   }
 
   getProducts(): Observable<Product[]> {
-    return this.http
-      .get<ProductRaw[]>(`${environment.firebaseDBLink}/products.json`)
-      .pipe(
-        map((products) => {
-          return products.map((product, i) => {
-            return {
-              ...product,
-              id: String(i),
-            } as Product;
-          });
-        })
-      );
+    // return this.http
+    //   .get<ProductRaw[]>(`${environment.firebaseDBLink}/products.json`)
+    //   .pipe(
+    //     map((products) => {
+    //       return products.map((product, i) => {
+    //         return {
+    //           ...product,
+    //           id: String(i),
+    //         } as Product;
+    //       });
+    //     })
+    //   );
+
+    return of(PRODUCTS);
   }
 
   getProduct(id: string): Observable<Product> {
@@ -57,9 +65,10 @@ export class ApiService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(
-      `${environment.firebaseDBLink}/categories.json`
-    );
+    // return this.http.get<Category[]>(
+    //   `${environment.firebaseDBLink}/categories.json`
+    // );
+    return of(CATEGORIES);
   }
 
   getPagesContent(): Observable<Pages> {
@@ -73,9 +82,10 @@ export class ApiService {
   }
 
   getCertificates(): Observable<CertificateDirty[]> {
-    return this.http.get<CertificateDirty[]>(
-      `${environment.firebaseDBLink}/certificates.json`
-    );
+    // return this.http.get<CertificateDirty[]>(
+    //   `${environment.firebaseDBLink}/certificates.json`
+    // );
+    return of(CERTIFICATES);
   }
 
   submitAnApplication(
