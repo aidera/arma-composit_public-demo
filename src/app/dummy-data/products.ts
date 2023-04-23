@@ -10,7 +10,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 1',
       ua: 'Product name 1',
     },
-    image: '/assets/images/products/1.png',
+    image: 'assets/images/products/1.png',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 2',
       ua: 'Product name 2',
     },
-    image: '/assets/images/products/2.jpeg',
+    image: 'assets/images/products/2.jpeg',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -60,7 +60,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 3',
       ua: 'Product name 3',
     },
-    image: '/assets/images/products/2.jpeg',
+    image: 'assets/images/products/2.jpeg',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -85,7 +85,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 4',
       ua: 'Product name 4',
     },
-    image: '/assets/images/products/2.jpeg',
+    image: 'assets/images/products/2.jpeg',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 5',
       ua: 'Product name 5',
     },
-    image: '/assets/images/products/3.jpg',
+    image: 'assets/images/products/3.jpg',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
       ru: 'Product name 6',
       ua: 'Product name 6',
     },
-    image: '/assets/images/products/3.jpg',
+    image: 'assets/images/products/3.jpg',
     description: {
       en:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
