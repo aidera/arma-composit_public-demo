@@ -1,7 +1,8 @@
 # ArmaComposit
 
-For GitHub Pages deployment use command
-ng deploy --base-href=/arma-composit_public-demo/
+For GitHub Pages deployment use commands
+`ng build --prod --base-href "https://aidera.github.io/arma-composit_public-demo/"`
+`npx angular-cli-ghpages --dir=dist/arma-composit`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
